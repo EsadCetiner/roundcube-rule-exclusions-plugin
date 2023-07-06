@@ -6,9 +6,12 @@ This plugin contains rule exclusions to fix false positives when using Roundcube
 - ModSecurity compatable Web Application Firewall
 
 # How to install the plugin
-To install this plugin, create a include for the file ``plugins/roundcube-rule-exclusions-config.conf`` and ``plugins/roundcube-rule-exclusions-before.conf`` after ``crs-setup.conf`` but before loading any CRS rules.
 
-See below for an example on how to install:
+Copy and paste the file ``roundcube-rule-exclusions-before.conf`` and ``roundcube-rule-exclusions-config.conf`` file into your CRS plugins folder.
+
+create a include for the file ``plugins/roundcube-rule-exclusions-config.conf`` and ``plugins/roundcube-rule-exclusions-before.conf`` after ``crs-setup.conf`` but before loading any CRS rules.
+
+See below for an example on how to create the includes:
 ```
 Include /path/to/coreruleset/modsecurity.conf
 Include /path/to/coreruleset/crs-setup.conf
@@ -18,6 +21,10 @@ Include /path/to/coreruleset/plugins/roundcube-rule-exclusions-before.conf
 
 Include /path/to/coreruleset/rules/*.conf
 ```
+
+Then reload your WAF to apply the new changes (Restart for Nginx ModSec users)
+
+You can also refer to official CRS documentation on how to install a plugin https://coreruleset.org/docs/concepts/plugins/#how-to-install-a-plugin
 
 # Disabling the plugin
 The plugin can be disabled by uncommenting rule 9519000 inside ``plugins/roundcube-rule-exclusions-config.conf`` or by removing the includes for this plugin.
