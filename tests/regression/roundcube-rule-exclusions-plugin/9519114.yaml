@@ -215,3 +215,4 @@ tests:
             uri: /post?_task=mail&_action=compose&_action=compose&_message=<script>
           output:
             no_log_contains: id "941101"
+
