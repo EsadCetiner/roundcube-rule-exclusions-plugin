@@ -37,4 +37,3 @@ tests:
             uri: /post?_task=utils&_action=html2text
           output:
             no_log_contains: id "920420"
-
