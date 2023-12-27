@@ -30,7 +30,7 @@ tests:
             headers:
               Host: localhost
               User-Agent: Roundcube rule exclusions plugin
-              referer: "set help"
+              referer: "?_task=set---"
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             port: 80
             method: POST
