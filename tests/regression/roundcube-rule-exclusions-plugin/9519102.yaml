@@ -36,4 +36,4 @@ tests:
             method: POST
             uri: /post
           output:
-            log_contains: id "932237"
+            log_contains: id "932239"
