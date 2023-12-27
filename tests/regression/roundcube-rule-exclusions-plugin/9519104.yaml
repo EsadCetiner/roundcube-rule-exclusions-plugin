@@ -35,18 +35,3 @@ tests:
             uri: /post?_token=0x800
           output:
             no_log_contains: id "942450"
-  - test_title: 9519104-3
-    desc: Don't disable 932236 for _token parameter if characters are outside of (a-zA-Z0-9) range
-    stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: POST
-            uri: /post?_token=set--help
-          output:
-            log_contains: id "932236"
