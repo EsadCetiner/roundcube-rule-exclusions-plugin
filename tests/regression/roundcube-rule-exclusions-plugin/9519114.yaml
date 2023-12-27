@@ -1,0 +1,217 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Roundcube Rule Exclusions Plugin"
+  enabled: true
+  name: 9519114.yaml
+tests:
+  - test_title: 9519114-1
+    desc: Disable 921180 for ARGS_NAMES:_id sending an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=send&_id=1&_id=2
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519114-2
+    desc: Disable 921180 for ARGS_NAMES:_id composing an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=compose&_id=1&_id=2
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519114-3
+    desc: Disable 921180 for ARGS_NAMES:_framed sending an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=send&_framed=1&_framed=2
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519114-4
+    desc: Disable 921180 for ARGS_NAMES:_framed composing an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=compose&_framed=1&_framed=2
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519114-5
+    desc: Disable 921180 for ARGS_NAMES:_task sending an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=send&_task=mail
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519114-6
+    desc: Disable 921180 for ARGS_NAMES:_task composing an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=compose&_task=mail
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519114-7
+    desc: Disable 921180 for ARGS_NAMES:_action sending an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=send&_action=send
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519114-8
+    desc: Disable 921180 for ARGS_NAMES:_action composing an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=compose&_action=compose
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519114-9
+    desc: Disable 942131 for destination email address when composing email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=compose&_to=Postmaster%20<postmaster@example.com>,
+          output:
+            no_log_contains: id "942131"
+  - test_title: 9519114-10
+    desc: Disable 942131 for destination email address when sending email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=send&_to=Postmaster%20<postmaster@example.com>,
+          output:
+            no_log_contains: id "942131"
+  - test_title: 9519114-11
+    desc: Disable CRS for email subject sending an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=send&_action=send&_subject=<script>
+          output:
+            no_log_contains: id "941101"
+  - test_title: 9519114-12
+    desc: Disable CRS for email subject composing an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=compose&_action=compose&_subject=<script>
+          output:
+            no_log_contains: id "941101"
+  - test_title: 9519114-13
+    desc: Disable CRS for email message sending an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=send&_action=send&_message=<script>
+          output:
+            no_log_contains: id "941101"
+  - test_title: 9519114-14
+    desc: Disable CRS for email message composing an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=mail&_action=compose&_action=compose&_message=<script>
+          output:
+            no_log_contains: id "941101"
