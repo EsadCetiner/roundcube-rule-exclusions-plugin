@@ -1,0 +1,67 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Roundcube Rule Exclusions Plugin"
+  enabled: true
+  name: 9519156.yaml
+tests:
+  - test_title: 9519156-1
+    desc: Disable 921180 for ARGS_NAMES:_action when managing out of office
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plsugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=settings&_action=plugin.managesieve-vacation&_action=plugin.managesieve-vacation
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519156-2
+    desc: Disable 921180 for ARGS_NAMES:_task when managing out of office
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plsugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=settings&_action=plugin.managesieve-vacation&_task=settings
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519156-3
+    desc: Disable CRS for vaccation subject
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plsugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=settings&_action=plugin.managesieve-vacation&vacation_subject=<script>
+          output:
+            no_log_contains: id "941101"
+  - test_title: 9519156-4
+    desc: Disable CRS for vaccation reason
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plsugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=settings&_action=plugin.managesieve-vacation&vacation_reason=<script>
+          output:
+            no_log_contains: id "941101"
