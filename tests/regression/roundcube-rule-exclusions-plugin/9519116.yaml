@@ -1,0 +1,23 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Roundcube Rule Exclusions Plugin"
+  enabled: true
+  name: 9519116.yaml
+tests:
+  - test_title: 9519116-1
+    desc: Disable 932131 for referrer when the referrer is valid and when configuring sieve filter from an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              referer: https://example.com/?_task=mail&_action=plugin.managesieve&_framed=1&r[0]=
+            port: 80
+            method: POST
+            uri: /post
+          output:
+            no_log_contains: id "932131"

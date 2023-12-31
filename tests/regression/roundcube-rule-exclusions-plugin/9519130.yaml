@@ -1,0 +1,67 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Roundcube Rule Exclusions Plugin"
+  enabled: true
+  name: 9519130.yaml
+tests:
+  - test_title: 9519130-1
+    desc: Disable 931130 for ARGS:_website[] when creating/modifying a contact
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=addressbook&_website[]=https://example.com/
+          output:
+            no_log_contains: id "931130"
+  - test_title: 9519130-2
+    desc: Disable 931130 for ARGS:_im[] when creating/modifying a contact
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=addressbook&_im[]=https://example.com/
+          output:
+            no_log_contains: id "931130"
+  - test_title: 9519130-3
+    desc: Disable 921180 for ARGS_NAMES:_framed, but only when viewing addressbook
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=addressbook&_framed=1&_framed=2
+          output:
+            no_log_contains: id "921180"
+  - test_title: 9519130-4
+    desc: Disable 921180 for ARGS_NAMES:_task, but only when viewing addressbook
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: POST
+            uri: /post?_task=addressbook&_task=addressbook
+          output:
+            no_log_contains: id "921180"

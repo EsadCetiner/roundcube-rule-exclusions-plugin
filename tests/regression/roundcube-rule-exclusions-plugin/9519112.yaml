@@ -1,0 +1,39 @@
+---
+meta:
+  author: "Esad Cetiner"
+  description: "Roundcube Rule Exclusions Plugin"
+  enabled: true
+  name: 9519112.yaml
+tests:
+  - test_title: 9519112-1
+    desc: Disable 951220 for response body when viewing an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: GET
+            uri: /get?_task=mail
+            data: "SqlException"
+          output:
+            no_log_contains: id "951220"
+  - test_title: 9519112-2
+    desc: Disable 951230 for response body when viewing an email
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: GET
+            uri: /get?_task=mail
+            data: "MySqlClient."
+          output:
+            no_log_contains: id "951230"
