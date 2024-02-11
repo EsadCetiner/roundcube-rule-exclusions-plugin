@@ -1,3 +1,6 @@
+![Integration tests](https://github.com/EsadCetiner/roundcube-rule-exclusions-plugin/actions/workflows/integration.yml/badge.svg)
+![Lint tests](https://github.com/EsadCetiner/roundcube-rule-exclusions-plugin/actions/workflows/lint.yml/badge.svg)
+
 # Roudcube-rule-exclusions-plugin
 This plugin contains rule exclusions to fix false positives when using Roundcube Webmail with the OWASP Core Rule Set.
 
