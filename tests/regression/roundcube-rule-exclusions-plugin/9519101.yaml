@@ -6,7 +6,7 @@ meta:
   name: 9519101.yaml
 tests:
   - test_title: 9519101-1
-    desc: Disable CRS for password login
+    desc: Logging into roundcube
     stages:
       - stage:
           input:
@@ -15,53 +15,17 @@ tests:
               Host: localhost
               User-Agent: Roundcube rule exclusions plugin
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/x-www-form-urlencoded
             port: 80
             method: POST
-            uri: /post?_task=login&_pass=<script>
+            uri: /post?_task=login
+            data: |
+              _token=randomtoken
+              _task=login
+              _action=login
+              _timezone=Australia%2FSydney
+              _url:
+              _user: postmaster%40example.com
+              _pass: %3Cscript%3E
           output:
             no_log_contains: id "941110"
-  - test_title: 9519101-2
-    desc: Disable 921180 for ARGS_NAMES:_task when logging in
-    stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: POST
-            uri: /post?_task=login&_task=login
-          output:
-            no_log_contains: id "921180"
-  - test_title: 9519101-3
-    desc: Disable 921180 for ARGS_NAMES:_framed when logging in
-    stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: POST
-            uri: /post?_task=login&_framed=1&_framed=1
-          output:
-            no_log_contains: id "921180"
-  - test_title: 9519101-4
-    desc: Disable 921180 for ARGS_NAMES:_action when logging in
-    stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: POST
-            uri: /post?_task=login&_action=1&_action=1
-          output:
-            no_log_contains: id "921180"

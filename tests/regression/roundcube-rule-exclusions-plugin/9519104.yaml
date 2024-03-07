@@ -17,7 +17,15 @@ tests:
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             port: 80
             method: POST
-            uri: /post?_token=dfdf
+            uri: /post
+            data: |
+              _token=lsrandom
+              _task=login
+              _action=login
+              _timezone=Australia%2FSydney
+              _url:
+              _user: postmaster%40example.com
+              _pass: %3Cscript%3E
           output:
             no_log_contains: id "932236"
   - test_title: 9519104-2
@@ -32,6 +40,14 @@ tests:
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             port: 80
             method: POST
-            uri: /post?_token=0x800
+            uri: /post
+            data: |
+              _token=0x0800random
+              _task=login
+              _action=login
+              _timezone=Australia%2FSydney
+              _url:
+              _user: postmaster%40example.com
+              _pass: %3Cscript%3E
           output:
             no_log_contains: id "942450"
