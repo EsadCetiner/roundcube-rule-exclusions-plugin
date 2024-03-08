@@ -6,7 +6,7 @@ meta:
   name: 9519104.yaml
 tests:
   - test_title: 9519104-1
-    desc: Disable 932236 for _token parameter, but only within a certain character range
+    desc: Disable 932236 for _token parameter
     stages:
       - stage:
           input:
@@ -23,13 +23,13 @@ tests:
               _task=login
               _action=login
               _timezone=Australia%2FSydney
-              _url:
-              _user: postmaster%40example.com
-              _pass: %3Cscript%3E
+              _url=empty
+              _user=postmaster%40example.com
+              _pass=%3Cscript%3E
           output:
             no_log_contains: id "932236"
   - test_title: 9519104-2
-    desc: Disable 942450 for _token parameter, but only within a certain character range
+    desc: Disable 942450 for _token parameter
     stages:
       - stage:
           input:
@@ -46,8 +46,8 @@ tests:
               _task=login
               _action=login
               _timezone=Australia%2FSydney
-              _url:
-              _user: postmaster%40example.com
-              _pass: %3Cscript%3E
+              _url=empty
+              _user=postmaster%40example.com
+              _pass=%3Cscript%3E
           output:
             no_log_contains: id "942450"
