@@ -38,11 +38,11 @@ tests:
               _framed=1
               _message=<script>
               editorSelector=plain
-             _mdn=empty
-             _dsn=empty
-             _keepformatting=empty
-             _priority=0
-             _store_target=Sent
+              _mdn=empty
+              _dsn=empty
+              _keepformatting=empty
+              _priority=0
+              _store_target=Sent
           output:
             no_log_contains: |
               id "(?:921180|941101|942131)"
