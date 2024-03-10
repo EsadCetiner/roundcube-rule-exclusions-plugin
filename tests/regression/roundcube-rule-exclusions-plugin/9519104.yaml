@@ -19,13 +19,7 @@ tests:
             method: POST
             uri: /post
             data: |
-              _token=lsrandom
-              _task=login
-              _action=login
-              _timezone=Australia%2FSydney
-              _url=empty
-              _user=postmaster%40example.com
-              _pass=%3Cscript%3E
+              _token=lsrandom&_task=login&_action=login&_timezone=Australia%2FSydney&_url=empty&_user=postmaster%40example.com&_pass=%3Cscript%3E
           output:
             no_log_contains: id "932236"
   - test_title: 9519104-2
@@ -42,12 +36,6 @@ tests:
             method: POST
             uri: /post
             data: |
-              _token=0x0800random
-              _task=login
-              _action=login
-              _timezone=Australia%2FSydney
-              _url=empty
-              _user=postmaster%40example.com
-              _pass=%3Cscript%3E
+              _token=0x0800random&_task=login&_action=login&_timezone=Australia%2FSydney&_url=empty&_user=postmaster%40example.com&_pass=%3Cscript%3E
           output:
             no_log_contains: id "942450"

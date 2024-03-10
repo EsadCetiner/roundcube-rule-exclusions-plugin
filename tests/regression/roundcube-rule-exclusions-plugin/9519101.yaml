@@ -20,12 +20,6 @@ tests:
             method: POST
             uri: /post?_task=login
             data: |
-              _token=randomtoken
-              _task=login
-              _action=login
-              _timezone=Australia%2FSydney
-              _url:
-              _user: postmaster%40example.com
-              _pass: %3Cscript%3E
+              _token=randomtoken&_task=login&_action=login&_timezone=Australia%2FSydney&_url=empty&_user=emptypostmaster%40example.com&_pass=empty%3Cscript%3E
           output:
             no_log_contains: id "941110"
