@@ -6,7 +6,7 @@ meta:
   name: 9519153.yaml
 tests:
   - test_title: 9519153-1
-    desc: Disable CRS for editing raw filter sets
+    desc: Editing raw filter sets
     stages:
       - stage:
           input:
@@ -15,13 +15,16 @@ tests:
               Host: localhost
               User-Agent: Roundcube rule exclusions plsugin
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/x-www-form-urlencoded; charset=UTF-8
             port: 80
             method: POST
-            uri: /post?rawsetcontent=<script>
+            uri: /post?_task=settings&_action=plugin.managesieve-action
+            data: |
+              _act=list&_set=managesieve&_remote=1&_unlock=loading1710411392771
           output:
             no_log_contains: id "941101"
   - test_title: 9519153-2
-    desc: Disable CRS for sieve filter sets
+    desc: Creating sieve filter sets
     stages:
       - stage:
           input:
@@ -30,8 +33,62 @@ tests:
               Host: localhost
               User-Agent: Roundcube rule exclusions plsugin
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/x-www-form-urlencoded
             port: 80
             method: POST
-            uri: /post?_rule_target[0][]=<script>
+            uri: /post
+            data: |
+              _token=randomtoken
+              _task=settings
+              _action=plugin.managesieve-save
+              _framed=1
+              _fid=test
+              _name=test
+              _enabled=1
+              _join=allof
+              _header%5B0%5D=subject
+              _custom_header%5B0%5D%5B%5D=test
+              _custom_var%5B0%5D%5B%5D=test
+              _rule_date_part%5B0%5D=date
+              _rule_message%5B0%5D=duplicate
+              _rule_op%5B0%5D=contains
+              _rule_target%5B0%5D%5B%5D=%3Cscript%3E
+              _rule_size_op%5B0%5D=over
+              _rule_size_target%5B0%5D=test
+              _rule_size_item%5B0%5D=test
+              _rule_spamtest_op%5B0%5D=test
+              _rule_spamtest_target%5B0%5D=1
+              _rule_mod%5B0%5D=test
+              _rule_mod_type%5B0%5D=all
+              _rule_comp%5B0%5D=test
+              _rule_mime_part%5B0%5D=test
+              _rule_mime_type%5B0%5D=test
+              _rule_mime_param%5B0%5D%5B%5D=test
+              _rule_trans%5B0%5D=text
+              _rule_trans_type%5B0%5D=test
+              _rule_date_header%5B0%5D=test
+              _rule_index%5B0%5D=test
+              _rule_duplicate_handle%5B0%5D=test
+              _rule_duplicate_header%5B0%5D=test
+              _rule_duplicate_uniqueid%5B0%5D=test
+              _rule_duplicate_seconds%5B0%5D=test
+              _action_type%5B0%5D=fileinto
+              _action_target%5B0%5D=test
+              _action_target_area%5B0%5D=test
+              _action_reason%5B0%5D=test
+              _action_subject%5B0%5D=test
+              _action_from%5B0%5D=test
+              _action_addresses%5B0%5D%5B%5D=test
+              _action_interval%5B0%5D=1
+              _action_flags%5B0%5D%5B%5D=test
+              _action_varname%5B0%5D=test
+              _action_varvalue%5B0%5D=test
+              _action_notifymethod%5B0%5D=mailto
+              _action_notifytarget%5B0%5D=test
+              _action_notifymessage%5B0%5D=test
+              _action_notifyfrom%5B0%5D=test
+              _action_notifyimportance%5B0%5D=2
+              _action_notifyoption%5B0%5D%5B%5D=test
+              _action_mailbox%5B0%5D=INBOX
           output:
             no_log_contains: id "941101"
