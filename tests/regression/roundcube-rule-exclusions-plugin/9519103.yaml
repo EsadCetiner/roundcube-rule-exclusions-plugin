@@ -6,7 +6,7 @@ meta:
   name: 9519103.yaml
 tests:
   - test_title: 9519103-1
-    desc: Disable 932236 for _task when set to mail"
+    desc: Viewing mailbox"
     stages:
       - stage:
           input:
@@ -16,12 +16,12 @@ tests:
               User-Agent: Roundcube rule exclusions plugin
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             port: 80
-            method: POST
-            uri: /post?_task=mail
+            method: get
+            uri: /get?_task=mail&_mbox=INBOX
           output:
             no_log_contains: id "932236"
   - test_title: 9519103-2
-    desc: Disable 932236 for _task when set to settings"
+    desc: Viewing settings"
     stages:
       - stage:
           input:
@@ -31,7 +31,7 @@ tests:
               User-Agent: Roundcube rule exclusions plugin
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             port: 80
-            method: POST
-            uri: /post?_task=settings
+            method: get
+            uri: /get?_task=settings&_action=preferences
           output:
             no_log_contains: id "932236"

@@ -6,7 +6,7 @@ meta:
   name: 9519152.yaml
 tests:
   - test_title: 9519152-1
-    desc: Disable CRS for current password prompt
+    desc: Changing Passwords
     stages:
       - stage:
           input:
@@ -15,38 +15,14 @@ tests:
               Host: localhost
               User-Agent: Roundcube rule exclusions plugin
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/x-www-form-urlencoded
             port: 80
             method: POST
-            uri: /post?_task=settings&_action=plugin.password-save&_curpasswd=<script>
-          output:
-            no_log_contains: id "941101"
-  - test_title: 9519152-2
-    desc: Disable CRS for new password prompt
-    stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: POST
-            uri: /post?_task=settings&_action=plugin.password-save&_newpasswd=<script>
-          output:
-            no_log_contains: id "941101"
-  - test_title: 9519152-3
-    desc: Disable CRS for confirm new password prompt
-    stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: POST
-            uri: /post?_task=settings&_action=plugin.password-save&_confpasswd=<script>
+            uri: /post?_task=settings&_action=plugin.password-save
+            data: |
+              _token=random
+              _curpasswd=<script>
+              _newpasswd=<script>
+              _confpasswd=<script>
           output:
             no_log_contains: id "941101"

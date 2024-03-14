@@ -15,8 +15,22 @@ tests:
               Host: localhost
               User-Agent: Roundcube rule exclusions plugin
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/x-www-form-urlencoded
             port: 80
             method: POST
-            uri: /post?_signature=<script>
+            uri: /post
+            data: |
+              _token=0DSmgBEDZh6R8fLjXZGc1zRAta36J5mx
+              _framed=1
+              _task=settings
+              _action=save-identity
+              _iid=1
+              _name=test
+              _email=postmaster@example.com
+              _organization=empty
+              _reply-to=empty
+              _bcc=empty
+              _standard=1
+              _signature=<script>
           output:
             no_log_contains: id "941101"
