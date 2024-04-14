@@ -20,4 +20,22 @@ tests:
             method: POST
             uri: /post
           output:
-            no_log_contains: id "932237"
+            no_log_contains: |
+              id "932237"| id "932239"
+  - test_title: 9519102-2
+    desc: Disable 932237 and 932239 for logout token in referer
+    stages:
+      - stage:
+          input:
+            dest_addr: 127.0.0.1
+            headers:
+              Host: localhost
+              User-Agent: Roundcube rule exclusions plugin
+              referer: https://mail.example.com/?_task=logout&_token=lsArandom
+              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            port: 80
+            method: GET
+            uri: /post
+          output:
+            no_log_contains: |
+              id "932237"| id "932239"
