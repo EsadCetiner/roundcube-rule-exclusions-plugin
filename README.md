@@ -31,7 +31,7 @@ SecRule REQUEST_FILENAME "@beginsWith %{tx.roundcube-rule-exclusions-path}" \
     ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[8][],\
     ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[9][],\
     ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[10][],\
-    ver:'roundcube-rule-exclusions-plugin/1.0.0'"
+    ver:'roundcube-rule-exclusions-plugin/1.0.2'"
 ```
 
 Unfortunately, this is the only solution I'm aware of without completely disabling the Core Rule Set. Please open an issue/PR if you think you've found a solution to this issue.
