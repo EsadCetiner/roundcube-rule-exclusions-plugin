@@ -67,6 +67,7 @@ tests:
             port: 80
             method: POST
             uri: /post
+            version: HTTP/1.1
           output:
             no_log_contains: id "942450"
   - test_title: 9519100-5
@@ -83,5 +84,6 @@ tests:
             port: 80
             method: POST
             uri: /post
+            version: HTTP/1.1
           output:
             no_log_contains: id "942450"

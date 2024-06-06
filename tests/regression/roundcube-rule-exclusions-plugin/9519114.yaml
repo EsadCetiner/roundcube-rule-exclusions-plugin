@@ -43,6 +43,7 @@ tests:
               _keepformatting=empty
               _priority=0
               _store_target=Sent
+            version: HTTP/1.1
           output:
             no_log_contains: |
               id "(?:921180|941101|942131)"

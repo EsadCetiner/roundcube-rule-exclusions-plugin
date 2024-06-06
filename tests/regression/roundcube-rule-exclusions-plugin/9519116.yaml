@@ -19,5 +19,6 @@ tests:
             port: 80
             method: POST
             uri: /post
+            version: HTTP/1.1
           output:
             no_log_contains: id "932131"

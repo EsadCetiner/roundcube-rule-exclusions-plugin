@@ -18,5 +18,6 @@ tests:
             port: 80
             method: GET
             uri: /get?_task=mail&_framed=1&_uid=42&_mbox=INBOX&_framed=1&_action=headers
+            version: HTTP/1.1
           output:
             no_log_contains: id "921180"

@@ -21,6 +21,7 @@ tests:
             uri: /post?_task=settings&_action=plugin.managesieve-action
             data: |
               _act=list&_set=managesieve&_remote=1&_unlock=loading1710411392771
+            version: HTTP/1.1
           output:
             no_log_contains: id "941101"
   - test_title: 9519153-2
@@ -90,5 +91,6 @@ tests:
               _action_notifyimportance%5B0%5D=2
               _action_notifyoption%5B0%5D%5B%5D=test
               _action_mailbox%5B0%5D=INBOX
+            version: HTTP/1.1
           output:
             no_log_contains: id "941101"

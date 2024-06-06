@@ -19,6 +19,7 @@ tests:
             port: 80
             method: POST
             uri: /post?_task=utils&_action=text2html
+            version: HTTP/1.1
           output:
             no_log_contains: id "920420"
   - test_title: 9519115-2
@@ -35,5 +36,6 @@ tests:
             port: 80
             method: POST
             uri: /post?_task=utils&_action=html2text
+            version: HTTP/1.1
           output:
             no_log_contains: id "920420"

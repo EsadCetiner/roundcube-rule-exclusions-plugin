@@ -21,6 +21,7 @@ tests:
             uri: /post?_task=login
             data: |
               _token=randomtoken&_task=login&_action=login&_timezone=Australia%2FSydney&_url=empty&_user=emptypostmaster%40example.com&_pass=empty%3Cscript%3E
+            version: HTTP/1.1
           output:
             no_log_contains: |
               id "920273" | id "921180" | id "932235" | id "932236" | id "942432" | id "941110"
@@ -40,6 +41,7 @@ tests:
             uri: /post?_task=login
             data: |
               _token=Chai6shie1jaifoori0Mai4iey6ua0el&_task=login&_action=login&_timezone=Europe%2FBudapest&_url=_task%3Dmail%26_mbox%3DINBOX&_user=account%40mydomain.com&_pass=S3cr3T
+            version: HTTP/1.1
           output:
             no_log_contains: |
               id "920273" | id "921180" | id "932235" | id "932236" | id "942432" | id "941110"

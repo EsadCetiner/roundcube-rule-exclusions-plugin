@@ -19,6 +19,7 @@ tests:
             method: GET
             uri: /get?_task=mail
             data: "SqlException"
+            version: HTTP/1.1
           output:
             no_log_contains: id "951220"
   - test_title: 9519112-2
@@ -35,5 +36,6 @@ tests:
             method: GET
             uri: /get?_task=mail
             data: "MySqlClient."
+            version: HTTP/1.1
           output:
             no_log_contains: id "951230"

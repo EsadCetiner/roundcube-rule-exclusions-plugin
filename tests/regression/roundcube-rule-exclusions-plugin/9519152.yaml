@@ -24,5 +24,6 @@ tests:
               _curpasswd=<script>
               _newpasswd=<script>
               _confpasswd=<script>
+            version: HTTP/1.1
           output:
             no_log_contains: id "941101"

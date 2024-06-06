@@ -19,5 +19,6 @@ tests:
             method: POST
             uri: /post
             data: "maximum allowed file size is 10MB"
+            version: HTTP/1.1
           output:
             no_log_contains: id "953101"

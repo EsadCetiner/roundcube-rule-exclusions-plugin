@@ -20,6 +20,7 @@ tests:
             uri: /post?_task=settings&_action=plugin.managesieve-vacation
             data: |
               _token=randomtoken&_task=settings&_action=plugin.managesieve-vacation&vacation_subject=%3Cscript%3E&vacation_reason=%3Cscript%3E%0D%0AI+am+not+home&vacation_datefrom=14%2F03%2F2024&vacation_timefrom=&vacation_dateto=15%2F03%2F2024&vacation_timeto=&vacation_status=on&vacation_from=postmaster%40example.com&vacation_addresses%5B%5D=postmaster%40example.com&vacation_interval=1&vacation_action=keep&action_target=&_remote=1&_unlock=loading1710410586795
+            version: HTTP/1.1
           output:
             no_log_contains: |
               id "(?:921180|941101)"
