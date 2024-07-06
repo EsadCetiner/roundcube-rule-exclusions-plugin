@@ -46,4 +46,4 @@ tests:
             version: HTTP/1.1
           output:
             no_log_contains: |
-              id "(?:921180|941101|942131)"
+              id "921180"|id "941101"|id "942131"
