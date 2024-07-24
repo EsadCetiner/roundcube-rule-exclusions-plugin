@@ -20,10 +20,7 @@ tests:
             method: POST
             uri: /post?_task=settings&_action=plugin.password-save
             data: |
-              _token=random
-              _curpasswd=<script>
-              _newpasswd=<script>
-              _confpasswd=<script>
+              _token=random&_curpasswd=%3Cscript%3E&_newpasswd=%3Cscript%3E&_confpasswd=%3Cscript%3E
             version: HTTP/1.1
           output:
             no_log_contains: id "941101"
