@@ -20,18 +20,7 @@ tests:
             method: POST
             uri: /post
             data: |
-              _token=0DSmgBEDZh6R8fLjXZGc1zRAta36J5mx
-              _framed=1
-              _task=settings
-              _action=save-identity
-              _iid=1
-              _name=test
-              _email=postmaster@example.com
-              _organization=empty
-              _reply-to=empty
-              _bcc=empty
-              _standard=1
-              _signature=<script>
+              _token=random&_framed=1&_task=settings&_action=save-identity&_iid=3&_name=&_email=postmaster%40example.com&_organization=&_reply-to=&_bcc=&_standard=1&_signature=%3Cscript%3E
             version: HTTP/1.1
           output:
             no_log_contains: id "941101"
