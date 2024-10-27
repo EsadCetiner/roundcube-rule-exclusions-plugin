@@ -11,6 +11,10 @@ This plugin contains rule exclusions to fix false positives when using Roundcube
 
 For full and up to date instructions on installing plugins, please refer to [How to Install a Plugin](https://coreruleset.org/docs/concepts/plugins/#how-to-install-a-plugin) in the official CRS documentation.
 
+### Conditionally enable plugins for multi-application environments
+
+For full and up to date instructions on how to conditionally enable/disable this plugin on a multisite environment, please refer to [Conditionally enable plugins for multi-application environments](https://coreruleset.org/docs/concepts/plugins/#conditionally-enable-plugins-for-multi-application-environments) in the official CRS documentation.
+
 ### Configuration
 
 Since Roundcube sends all requests to the same URL path, by default this plugin will unconditionally apply all rule exclusions to all URL paths. This behavior is configurable, you can choose to only apply rule exclusions to a specific URL path that Roundcube is installed on (For example, /mail/ or /roundcube/) by editing the rule ``9519001`` in ``plugins/roundcube-rule-exclusions-config.conf``. This is useful if you are hosting multiple web applications on the same domain and you only want to enable the Roundcube plugin on Roundcube.
