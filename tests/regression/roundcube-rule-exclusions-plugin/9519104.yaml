@@ -18,7 +18,7 @@ tests:
             port: 80
             method: POST
             uri: /post
-            data: |
+            data: |-
               _token=lsrandom&_task=login&_action=login&_timezone=Australia%2FSydney&_url=empty&_user=postmaster%40example.com&_pass=%3Cscript%3E
             version: HTTP/1.1
           output:
@@ -36,7 +36,7 @@ tests:
             port: 80
             method: POST
             uri: /post
-            data: |
+            data: |-
               _token=0x0800random&_task=login&_action=login&_timezone=Australia%2FSydney&_url=empty&_user=postmaster%40example.com&_pass=%3Cscript%3E
             version: HTTP/1.1
           output:
