@@ -14,14 +14,14 @@ tests:
             headers:
               Host: localhost
               User-Agent: Roundcube rule exclusions plugin
-              referer: https://example.com/?_task=settings
+              Referer: https://example.com/?_task=settings
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             port: 80
-            method: POST
-            uri: /post
+            method: GET
+            uri: /get
             version: HTTP/1.1
           output:
-            no_log_contains: |
+            no_log_contains: |-
               id "932237"|id "932239"
   - test_title: 9519102-2
     desc: Disable 932237 and 932239 for logout token in referer
@@ -32,12 +32,12 @@ tests:
             headers:
               Host: localhost
               User-Agent: Roundcube rule exclusions plugin
-              referer: https://mail.example.com/?_task=logout&_token=lsArandom
+              Referer: https://mail.example.com/?_task=logout&_token=lsArandom
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
             port: 80
             method: GET
-            uri: /post
+            uri: /get
             version: HTTP/1.1
           output:
-            no_log_contains: |
+            no_log_contains: |-
               id "932237"|id "932239"

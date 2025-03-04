@@ -6,7 +6,7 @@ meta:
   name: 9519100.yaml
 tests:
   - test_title: 9519100-1
-    desc: Disable 932236 for roundcube_sessid cookie
+    desc: Disable 932236 for roundcube_sessid and roundcube_sessauth cookie and identviewsplitter cookie name
     stages:
       - stage:
           input:
@@ -15,14 +15,14 @@ tests:
               Host: localhost
               User-Agent: Roundcube rule exclusions plugin
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-              cookie: roundcube_sessid=dfjsdia80f
+              Cookie: roundcube_sessid=dfjsdia80f; roundcube_sessauth=dfjsdia80f; identviewsplitter=foo
             port: 80
-            method: POST
-            uri: /post
+            method: GET
+            uri: /get?_task=mail&_mbox=INBOX
           output:
             no_log_contains: id "932236"
   - test_title: 9519100-2
-    desc: Disable 932236 for roundcube_sessauth cookie
+    desc: Disable 942450 for roundcube_sessid and roundcube_sessauth cookie
     stages:
       - stage:
           input:
@@ -31,59 +31,10 @@ tests:
               Host: localhost
               User-Agent: Roundcube rule exclusions plugin
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-              cookie: roundcube_sessauth=dfjsdia80f
+              Cookie: roundcube_sessid=0x0800; roundcube_sessauth=0x0800
             port: 80
-            method: POST
-            uri: /post
-          output:
-            no_log_contains: id "932236"
-  - test_title: 9519100-3
-    desc: Disable 932236 for identviewsplitter cookie name
-    stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-              cookie: identviewsplitter=foo
-            port: 80
-            method: POST
-            uri: /post
-          output:
-            no_log_contains: id "932236"
-  - test_title: 9519100-4
-    desc: Disable 942450 for roundcube_sessid cookie
-    stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-              cookie: roundcube_sessid=0x0800
-            port: 80
-            method: POST
-            uri: /post
-            version: HTTP/1.1
-          output:
-            no_log_contains: id "942450"
-  - test_title: 9519100-5
-    desc: Disable 942450 for roundcube_sessauth cookie
-    stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-              cookie: roundcube_sessauth=0x0800
-            port: 80
-            method: POST
-            uri: /post
+            method: GET
+            uri: /get?_task=mail&_mbox=INBOX
             version: HTTP/1.1
           output:
             no_log_contains: id "942450"

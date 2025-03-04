@@ -15,6 +15,7 @@ tests:
               Host: localhost
               User-Agent: Roundcube rule exclusions plugin
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+              Content-Type: application/x-www-form-urlencoded; charset=UTF-8
             port: 80
             method: POST
             uri: /post?_task=settings&_action=plugin.managesieve-vacation
@@ -22,5 +23,5 @@ tests:
               _token=randomtoken&_task=settings&_action=plugin.managesieve-vacation&vacation_subject=%3Cscript%3E&vacation_reason=%3Cscript%3E%0D%0AI+am+not+home&vacation_datefrom=14%2F03%2F2024&vacation_timefrom=&vacation_dateto=15%2F03%2F2024&vacation_timeto=&vacation_status=on&vacation_from=postmaster%40example.com&vacation_addresses%5B%5D=postmaster%40example.com&vacation_interval=1&vacation_action=keep&action_target=&_remote=1&_unlock=loading1710410586795
             version: HTTP/1.1
           output:
-            no_log_contains: |
-              id "920273"|id "921180"|id "921220"|id "941101"|id "942432"
+            no_log_contains: |-
+              id "920273"|id "921180"|id "921220"|id "941100"|id "942432"

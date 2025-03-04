@@ -23,5 +23,5 @@ tests:
               _token=random&_framed=1&_photo=-del-&_task=addressbook&_action=save&_framed=1&_source=0&_gid=0&_search=test&_cid=1test&_prefix=test&_firstname=Test&_middlename=test&_surname=Test&_suffix=test&_name=test&_nickname=test&_organization=test&_department=test&_jobtitle=test&_subtype_email[]=home&_email[]=test&_subtype_phone[]=home&_phone[]=test&_subtype_address[]=home&_street[]=test&_locality[]=test&_zipcode[]=test&_country[]=test&_region[]=test&_subtype_website[]=homepage&_website[]=https://example.com/&_subtype_im[]=aim&_im[]=https://example.com/&_gender=test&_birthday=test&_notes=test
             version: HTTP/1.1
           output:
-            no_log_contains: |
+            no_log_contains: |-
               id "920273"|id "921180"|id "921220"|id "931130"|id "942432"

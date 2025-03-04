@@ -17,8 +17,8 @@ tests:
               Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
               referer: https://example.com/?_task=mail&_action=plugin.managesieve&_framed=1&r[0]=
             port: 80
-            method: POST
-            uri: /post
+            method: GET
+            uri: /get
             version: HTTP/1.1
           output:
             no_log_contains: id "932131"

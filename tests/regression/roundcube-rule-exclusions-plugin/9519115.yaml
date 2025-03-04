@@ -6,7 +6,7 @@ meta:
   name: 9519115.yaml
 tests:
   - test_title: 9519115-1
-    desc: Allow application/octet-stream content type when composing an email/writing a signature with HTML mode
+    desc: Allow application/octet-stream content type when composing an email/writing with HTML mode
     stages:
       - stage:
           input:
@@ -19,11 +19,12 @@ tests:
             port: 80
             method: POST
             uri: /post?_task=utils&_action=text2html
+            data: "raw binary data goes here"
             version: HTTP/1.1
           output:
             no_log_contains: id "920420"
   - test_title: 9519115-2
-    desc: Allow application/octet-stream content type when composing an email/writing a signature with HTML mode
+    desc: Allow application/octet-stream content type when composing an email/writing with HTML mode
     stages:
       - stage:
           input:
@@ -36,6 +37,7 @@ tests:
             port: 80
             method: POST
             uri: /post?_task=utils&_action=html2text
+            data: "raw binary data goes here"
             version: HTTP/1.1
           output:
             no_log_contains: id "920420"
