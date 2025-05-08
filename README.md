@@ -52,6 +52,6 @@ Pull requests are welcomed if you know how to fix the issue, but please make sur
 
 ## License
 
-Copyright (c) 2023-2024 Esad Cetiner
+Copyright (c) 2023-2025 Esad Cetiner
 
 This plugin is distributed under GNU General Public License V2 (GPLv2), please see the included LICENSE file for details.
