@@ -22,7 +22,7 @@ tests:
             _act=list&_set=managesieve&_remote=1&_unlock=loading1710411392771
           version: HTTP/1.1
         output:
-          log:            
+          log:
             no_expect_ids: [941100]
   - test_id: 2
     desc: Creating sieve filter sets
