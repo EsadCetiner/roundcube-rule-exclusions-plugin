@@ -3,7 +3,7 @@ meta:
   author: "Esad Cetiner"
   description: "Roundcube Rule Exclusions Plugin"
   enabled: true
-  name: 9519152.yaml
+  rule_id: 9519152
 tests:
   - test_id: 1
     desc: Changing Passwords
