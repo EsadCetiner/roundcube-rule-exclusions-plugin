@@ -2,7 +2,6 @@
 meta:
   author: "Esad Cetiner"
   description: "Roundcube Rule Exclusions Plugin"
-  enabled: true
   rule_id: 9519151
 tests:
   - test_id: 1
