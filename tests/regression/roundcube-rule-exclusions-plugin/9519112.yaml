@@ -2,7 +2,7 @@
 meta:
   author: "Esad Cetiner"
   description: "Roundcube Rule Exclusions Plugin"
-  rule_id: 9519112
+rule_id: 9519112
 tests:
   - test_id: 1
     desc: Disable 951220 for response body when viewing an email
