@@ -2,26 +2,29 @@
 meta:
   author: "Esad Cetiner"
   description: "Roundcube Rule Exclusions Plugin"
-  enabled: true
-  name: 9519114.yaml
+rule_id: 9519114
 tests:
-  - test_title: 9519114-1
+  - test_id: 1
     desc: Sending an email
     stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-              Content-Type: application/x-www-form-urlencoded
-            port: 80
-            method: POST
-            uri: /post?_task=mail&_unlock=loading1709858237830&_framed=1
-            data: |-
-              _token=random&_task=mail&_action=send&_id=random7&_attachments=&_from=3&_to=postmaster+%3Cpostmaster%40example.com%3E%2C&_cc=&_bcc=&_replyto=&_followupto=&_subject=%3Cscript%3E&_draft_saveid=&_draft=&_is_html=0&_framed=1&_message=%3Cscript%3E&editorSelector=plain&_mdn=&_dsn=&_keepformatting=&_priority=0&_store_target=Sent
-            version: HTTP/1.1
-          output:
-            no_log_contains: |-
-              id "920273"|id "921180"|id "941100"|id "942131"|id "942432"
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+          port: 80
+          method: POST
+          uri: /post?_task=mail&_unlock=loading1709858237830&_framed=1
+          data: |-
+            _token=random&_task=mail&_action=send&_id=random7&_attachments=&_from=3&_to=postmaster+%3Cpostmaster%40example.com%3E%2C&_cc=&_bcc=&_replyto=&_followupto=&_subject=%3Cscript%3E&_draft_saveid=&_draft=&_is_html=0&_framed=1&_message=%3Cscript%3E&editorSelector=plain&_mdn=&_dsn=&_keepformatting=&_priority=0&_store_target=Sent
+          version: HTTP/1.1
+        output:
+          log:
+            no_expect_ids:
+              - 920273
+              - 921180
+              - 941100
+              - 942131
+              - 942432

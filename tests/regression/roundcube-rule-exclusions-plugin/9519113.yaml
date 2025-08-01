@@ -2,22 +2,21 @@
 meta:
   author: "Esad Cetiner"
   description: "Roundcube Rule Exclusions Plugin"
-  enabled: true
-  name: 9519113.yaml
+rule_id: 9519113
 tests:
-  - test_title: 9519113-1
+  - test_id: 1
     desc: Disable 921180 for ARGS_NAMES:_framed when viewing an email
     stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            port: 80
-            method: GET
-            uri: /get?_task=mail&_framed=1&_uid=42&_mbox=INBOX&_framed=1&_action=headers
-            version: HTTP/1.1
-          output:
-            no_log_contains: id "921180"
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+          port: 80
+          method: GET
+          uri: /get?_task=mail&_framed=1&_uid=42&_mbox=INBOX&_framed=1&_action=headers
+          version: HTTP/1.1
+        output:
+          log:
+            no_expect_ids: [921180]

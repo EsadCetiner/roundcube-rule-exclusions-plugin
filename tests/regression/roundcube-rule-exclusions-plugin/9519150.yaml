@@ -2,26 +2,26 @@
 meta:
   author: "Esad Cetiner"
   description: "Roundcube Rule Exclusions Plugin"
-  enabled: true
-  name: 9519150.yaml
+rule_id: 9519150
 tests:
-  - test_title: 9519150-1
+  - test_id: 1
     desc: Disable CRS for ARGS:_signature
     stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-              Content-Type: application/x-www-form-urlencoded
-            port: 80
-            method: POST
-            uri: /post
-            data: |-
-              _token=random&_framed=1&_task=settings&_action=save-identity&_iid=3&_name=&_email=postmaster%40example.com&_organization=&_reply-to=&_bcc=&_standard=1&_signature=%3Cscript%3E
-            version: HTTP/1.1
-          output:
-            no_log_contains: |-
-              id "920273"|id "941100"
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/x-www-form-urlencoded
+          port: 80
+          method: POST
+          uri: /post
+          data: |-
+            _token=random&_framed=1&_task=settings&_action=save-identity&_iid=3&_name=&_email=postmaster%40example.com&_organization=&_reply-to=&_bcc=&_standard=1&_signature=%3Cscript%3E
+          version: HTTP/1.1
+        output:
+          log:
+            no_expect_ids:
+              - 920273
+              - 941100

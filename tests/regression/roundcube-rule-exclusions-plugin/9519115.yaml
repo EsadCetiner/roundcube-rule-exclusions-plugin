@@ -2,42 +2,41 @@
 meta:
   author: "Esad Cetiner"
   description: "Roundcube Rule Exclusions Plugin"
-  enabled: true
-  name: 9519115.yaml
+rule_id: 9519115
 tests:
-  - test_title: 9519115-1
+  - test_id: 1
     desc: Allow application/octet-stream content type when composing an email/writing with HTML mode
     stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-              Content-Type: application/octet-stream
-            port: 80
-            method: POST
-            uri: /post?_task=utils&_action=text2html
-            data: "raw binary data goes here"
-            version: HTTP/1.1
-          output:
-            no_log_contains: id "920420"
-  - test_title: 9519115-2
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/octet-stream
+          port: 80
+          method: POST
+          uri: /post?_task=utils&_action=text2html
+          data: "raw binary data goes here"
+          version: HTTP/1.1
+        output:
+          log:
+            no_expect_ids: [920420]
+  - test_id: 2
     desc: Allow application/octet-stream content type when composing an email/writing with HTML mode
     stages:
-      - stage:
-          input:
-            dest_addr: 127.0.0.1
-            headers:
-              Host: localhost
-              User-Agent: Roundcube rule exclusions plugin
-              Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-              Content-Type: application/octet-stream
-            port: 80
-            method: POST
-            uri: /post?_task=utils&_action=html2text
-            data: "raw binary data goes here"
-            version: HTTP/1.1
-          output:
-            no_log_contains: id "920420"
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/octet-stream
+          port: 80
+          method: POST
+          uri: /post?_task=utils&_action=html2text
+          data: "raw binary data goes here"
+          version: HTTP/1.1
+        output:
+          log:
+            no_expect_ids: [920420]
