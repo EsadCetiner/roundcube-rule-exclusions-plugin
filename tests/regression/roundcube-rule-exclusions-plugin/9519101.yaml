@@ -1,11 +1,10 @@
 ---
 meta:
   author: "Esad Cetiner"
-  description: "Roundcube Rule Exclusions Plugin"
+  description: "Logging into Roundcube"
 rule_id: 9519101
 tests:
   - test_id: 1
-    desc: Logging into roundcube
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -30,7 +29,6 @@ tests:
               - 941110
               - 942432
   - test_id: 2
-    desc: Logging into roundcube
     stages:
       - input:
           dest_addr: 127.0.0.1
