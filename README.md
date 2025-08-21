@@ -25,20 +25,20 @@ If you use sieve filter sets, then you may still encounter some false positives.
 
 ```
 SecRule REQUEST_FILENAME "@beginsWith %{tx.roundcube-rule-exclusions-path}" \
-    "id:1,\
+    "id:9519050,\
     phase:1,\
     pass,\
     t:none,\
     nolog,\
-    ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[6][],\
-    ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[7][],\
-    ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[8][],\
-    ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[9][],\
-    ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[10][],\
+    ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[101][],\
+    ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[102][],\
+    ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[102][],\
+    ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[103][],\
+    ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[104][],\
     ver:'roundcube-rule-exclusions-plugin/1.0.3'"
 ```
 
-Unfortunately, this is the only solution I'm aware of without completely disabling CRS. Please open an issue/PR if you think you've found a solution to this issue.
+Unfortunately, this is the only solution I'm aware of without completely disabling CRS, although I tried to make sieve filters work for most use cases. Please open an issue/PR if you think you've found a solution to this issue.
 
 ## Reporting false positives
 If you find a false positive that this plugin does not cover then please open a new issue or pull request, if creating an issue then please include the following details:
