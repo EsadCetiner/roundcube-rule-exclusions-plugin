@@ -37,3 +37,39 @@ tests:
         output:
           log:
             no_expect_ids: [942450]
+  - test_id: 3
+    desc: Disable 932236 for _token parameter
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+          port: 80
+          method: POST
+          uri: /post
+          data: |-
+            _token=lsrandom&_task=login&_action=login&_timezone=Australia%2FSydney&_url=empty&_user=postmaster%40example.com&_pass=%3Cscript%3E
+          version: HTTP/1.1
+        output:
+          log:
+            no_expect_ids: [932236]
+  - test_id: 4
+    desc: Disable 942450 for _token parameter
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+          port: 80
+          method: POST
+          uri: /post
+          data: |-
+            _token=0x0800random&_task=login&_action=login&_timezone=Australia%2FSydney&_url=empty&_user=postmaster%40example.com&_pass=%3Cscript%3E
+          version: HTTP/1.1
+        output:
+          log:
+            no_expect_ids: [942450]
