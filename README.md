@@ -35,7 +35,7 @@ SecRule REQUEST_FILENAME "@beginsWith %{tx.roundcube-rule-exclusions-path}" \
     ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[102][],\
     ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[103][],\
     ctl:ruleRemoveTargetByTag=OWASP_CRS;ARGS:_rule_target[104][],\
-    ver:'roundcube-rule-exclusions-plugin/1.0.3'"
+    ver:'roundcube-rule-exclusions-plugin/1.0.4'"
 ```
 
 Unfortunately, this is the only solution I'm aware of without completely disabling CRS, although I tried to make sieve filters work for most use cases. Please open an issue/PR if you think you've found a solution to this issue.
