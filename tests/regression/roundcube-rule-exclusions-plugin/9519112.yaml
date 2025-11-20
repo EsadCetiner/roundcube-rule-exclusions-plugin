@@ -5,6 +5,22 @@ meta:
 rule_id: 9519112
 tests:
   - test_id: 1
+    desc: Configure Albedo for next test
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/json
+          port: 80
+          method: POST
+          uri: /configure_reflection
+          data: |-
+            { "endpoints": [{"method": "GET", "url": "/roundcube1?_task=mail"}], "body": "SqlException" }
+          version: HTTP/1.1
+  - test_id: 2
     desc: Disable 951220 for response body when viewing an email
     stages:
       - input:
@@ -13,17 +29,44 @@ tests:
             Host: localhost
             User-Agent: Roundcube rule exclusions plugin
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Content-Type: application/json
           port: 80
-          method: POST
-          uri: /reflect?_task=mail
-          data: |-
-            {"body": "SqlException"}
+          method: GET
+          uri: /roundcube1?_task=mail
           version: HTTP/1.1
         output:
           log:
             no_expect_ids: [951220]
-  - test_id: 2
+  - test_id: 3
+    desc: Reset Albedo for next tests
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/json
+          port: 80
+          method: PUT
+          uri: /reset
+          version: HTTP/1.1
+  - test_id: 4
+    desc: Configure Albedo for next test
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/json
+          port: 80
+          method: POST
+          uri: /configure_reflection
+          data: |-
+            { "endpoints": [{"method": "GET", "url": "/roundcube2?_task=mail"}], "body": "MySqlClient." }
+          version: HTTP/1.1
+  - test_id: 5
     desc: Disable 951230 for response body when viewing an email
     stages:
       - input:
@@ -32,18 +75,29 @@ tests:
             Host: localhost
             User-Agent: Roundcube rule exclusions plugin
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
-            Content-Type: application/json
           port: 80
-          method: POST
-          uri: /reflect?_task=mail
-          data: |-
-            {"body": "MySqlClient."}
+          method: GET
+          uri: /roundcube2?_task=mail
           version: HTTP/1.1
         output:
           log:
             no_expect_ids: [951230]
-  - test_id: 3
-    desc: Make sure 951230 is still triggered when not viewing an email.
+  - test_id: 6
+    desc: Reset Albedo for next tests
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/json
+          port: 80
+          method: PUT
+          uri: /reset
+          version: HTTP/1.1
+  - test_id: 7
+    desc: Configure Albedo for next test
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -54,10 +108,37 @@ tests:
             Content-Type: application/json
           port: 80
           method: POST
-          uri: /reflect?_task=invalid
+          uri: /configure_reflection
           data: |-
-            {"body": "MySqlClient."}
+            { "endpoints": [{"method": "GET", "url": "/roundcube3?_task=invalid"}], "body": "MySqlClient." }
+          version: HTTP/1.1
+  - test_id: 8
+    desc: Make sure 951230 is still triggered when not viewing an email.
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+          port: 80
+          method: GET
+          uri: /roundcube3?_task=invalid
           version: HTTP/1.1
         output:
           log:
             expect_ids: [951230]
+  - test_id: 9
+    desc: Reset Albedo for next tests
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/json
+          port: 80
+          method: PUT
+          uri: /reset
+          version: HTTP/1.1

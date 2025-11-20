@@ -5,7 +5,7 @@ meta:
 rule_id: 9519111
 tests:
   - test_id: 1
-    desc: Disable 953101 for response body
+    desc: Configure Albedo for next test
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -16,10 +16,37 @@ tests:
             Content-Type: application/json
           port: 80
           method: POST
-          uri: /reflect
+          uri: /configure_reflection 
           data: |-
-            { "data": "maximum allowed file size is 10MB" }
+            { "endpoints": [{"method": "GET", "url": "/roundcube"}], "body": "maximum allowed file size is 10MB" }
+          version: HTTP/1.1
+  - test_id: 2
+    desc: Disable 953101 for response body
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+          port: 80
+          method: GET
+          uri: /roundcube
           version: HTTP/1.1
         output:
           log:
             no_expect_ids: [953101]
+  - test_id: 3
+    desc: Reset Albedo for next tests
+    stages:
+      - input:
+          dest_addr: 127.0.0.1
+          headers:
+            Host: localhost
+            User-Agent: Roundcube rule exclusions plugin
+            Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+            Content-Type: application/json
+          port: 80
+          method: PUT
+          uri: /reset
+          version: HTTP/1.1
