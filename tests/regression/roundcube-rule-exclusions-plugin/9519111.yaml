@@ -18,7 +18,7 @@ tests:
           method: POST
           uri: /configure_reflection
           data: |-
-            { "endpoints": [{"method": "GET", "url": "/roundcube"}], "body": "maximum allowed file size is 10MB" }
+            { "endpoints": [{"method": "GET", "url": "/roundcube"}], "body": "maximum allowed file size is 10 MB" }
           version: HTTP/1.1
   - test_id: 2
     desc: Disable 953101 for response body
