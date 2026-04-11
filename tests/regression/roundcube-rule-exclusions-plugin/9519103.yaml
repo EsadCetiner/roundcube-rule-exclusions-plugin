@@ -1,9 +1,9 @@
 ---
 meta:
   author: "Esad Cetiner"
-  description: "Roundcube Rule Exclusions Plugin"
-rule_id: 9519102
-# Note: Keep these tests in sync with 9519103.yaml and adjust the `uri` to `/get`
+  description: "Roundcube Rule Exclusions Plugin: Obtaining favicon"
+rule_id: 9519103
+# Note: Keep these tests in sync with 9519102.yaml and adjust the `uri` to `/favicon.ico`
 tests:
   - test_id: 1
     desc: Settings Referer
@@ -17,7 +17,7 @@ tests:
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
           port: 80
           method: GET
-          uri: /get
+          uri: /favicon.ico
           version: HTTP/1.1
         output:
           log:
@@ -36,7 +36,7 @@ tests:
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
           port: 80
           method: GET
-          uri: /get
+          uri: /favicon.ico
           version: HTTP/1.1
         output:
           log:
@@ -55,7 +55,7 @@ tests:
             Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
           port: 80
           method: GET
-          uri: /get
+          uri: /favicon.ico
           version: HTTP/1.1
         output:
           log:
