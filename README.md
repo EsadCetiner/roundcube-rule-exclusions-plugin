@@ -40,6 +40,21 @@ SecRule REQUEST_FILENAME "@beginsWith %{tx.roundcube-rule-exclusions-path}" \
 
 Unfortunately, this is the only solution I'm aware of without completely disabling CRS, although I tried to make sieve filters work for most use cases. Please open an issue/PR if you think you've found a solution to this issue.
 
+## Known limitations
+
+By default, Coraza (Used by CrowdSec AppSec) will use the `URLENCODED` body processor when no other request body has been configured. What body processor Coraza uses is definted in the `coraza.conf` file. This results in the [HTML editor being broken under certain conditions](https://github.com/EsadCetiner/roundcube-rule-exclusions-plugin/issues/3), this can be remedied by configuring Coraza to use the `RAW` body processor when no other body processor has been enabled.
+
+```
+SecRule REQBODY_PROCESSOR "!@rx (?:URLENCODED|MULTIPART|XML|JSON)" \
+    "id:9508033,\
+    phase:1,\
+    pass,\
+    nolog,\
+    ctl:requestBodyProcessor=RAW"
+```
+
+**NOTE:** `tx.enforce_bodyproc_urlencoded` is effectively the same thing as described above, `tx.enforce_bodyproc_urlencoded` is supported by this plugin and contains rule-exclusions to handle false positives resulting from forcing a body processsor.
+
 ## Reporting false positives
 If you find a false positive that this plugin does not cover then please open a new issue or pull request, if creating an issue then please include the following details:
 
