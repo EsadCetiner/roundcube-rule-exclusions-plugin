@@ -46,7 +46,7 @@ By default, Coraza (Used by CrowdSec AppSec) will use the `URLENCODED` body proc
 
 ```
 SecRule REQBODY_PROCESSOR "!@rx (?:URLENCODED|MULTIPART|XML|JSON)" \
-    "id:9508033,\
+    "id:9519051,\
     phase:1,\
     pass,\
     nolog,\
