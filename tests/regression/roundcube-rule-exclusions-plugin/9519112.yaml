@@ -5,7 +5,7 @@ meta:
 rule_id: 9519112
 tests:
   - test_id: 1
-    desc: Configure Albedo for next test
+    desc: Viewing an email message containing an SQL error
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -20,9 +20,7 @@ tests:
           data: |-
             { "endpoints": [{"method": "GET", "url": "/roundcube1?_task=mail"}], "body": "SqlException" }
           version: HTTP/1.1
-  - test_id: 2
-    desc: Disable 951220 for response body when viewing an email
-    stages:
+
       - input:
           dest_addr: 127.0.0.1
           headers:
@@ -36,9 +34,7 @@ tests:
         output:
           log:
             no_expect_ids: [951220]
-  - test_id: 3
-    desc: Reset Albedo for next tests
-    stages:
+
       - input:
           dest_addr: 127.0.0.1
           headers:
@@ -50,8 +46,8 @@ tests:
           method: PUT
           uri: /reset
           version: HTTP/1.1
-  - test_id: 4
-    desc: Configure Albedo for next test
+  - test_id: 2
+    desc: Viewing an email message containing an SQL error
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -66,9 +62,7 @@ tests:
           data: |-
             { "endpoints": [{"method": "GET", "url": "/roundcube2?_task=mail"}], "body": "MySqlClient." }
           version: HTTP/1.1
-  - test_id: 5
-    desc: Disable 951230 for response body when viewing an email
-    stages:
+
       - input:
           dest_addr: 127.0.0.1
           headers:
@@ -82,9 +76,7 @@ tests:
         output:
           log:
             no_expect_ids: [951230]
-  - test_id: 6
-    desc: Reset Albedo for next tests
-    stages:
+
       - input:
           dest_addr: 127.0.0.1
           headers:
@@ -97,7 +89,7 @@ tests:
           uri: /reset
           version: HTTP/1.1
   - test_id: 7
-    desc: Configure Albedo for next test
+    desc: Make sure 951230 is still triggered when not viewing an email.
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -112,9 +104,7 @@ tests:
           data: |-
             { "endpoints": [{"method": "GET", "url": "/roundcube3?_task=invalid"}], "body": "MySqlClient." }
           version: HTTP/1.1
-  - test_id: 8
-    desc: Make sure 951230 is still triggered when not viewing an email.
-    stages:
+
       - input:
           dest_addr: 127.0.0.1
           headers:
@@ -128,9 +118,7 @@ tests:
         output:
           log:
             expect_ids: [951230]
-  - test_id: 9
-    desc: Reset Albedo for next tests
-    stages:
+
       - input:
           dest_addr: 127.0.0.1
           headers:

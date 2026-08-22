@@ -5,7 +5,7 @@ meta:
 rule_id: 9519111
 tests:
   - test_id: 1
-    desc: Configure Albedo for next test
+    desc: Disable 953101 for response body
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -20,9 +20,7 @@ tests:
           data: |-
             { "endpoints": [{"method": "GET", "url": "/roundcube"}], "body": "maximum allowed file size is 10 MB" }
           version: HTTP/1.1
-  - test_id: 2
-    desc: Disable 953101 for response body
-    stages:
+
       - input:
           dest_addr: 127.0.0.1
           headers:
@@ -36,9 +34,7 @@ tests:
         output:
           log:
             no_expect_ids: [953101]
-  - test_id: 3
-    desc: Reset Albedo for next tests
-    stages:
+
       - input:
           dest_addr: 127.0.0.1
           headers:

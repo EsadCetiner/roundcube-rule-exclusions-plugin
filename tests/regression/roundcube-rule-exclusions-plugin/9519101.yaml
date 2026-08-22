@@ -1,7 +1,7 @@
 ---
 meta:
   author: "Esad Cetiner"
-  description: "Logging into Roundcube"
+  description: "Roundcube Rule Exclusions Plugin: Logging into Roundcube"
 rule_id: 9519101
 tests:
   - test_id: 1
