@@ -5,7 +5,7 @@ meta:
 rule_id: 9519115
 tests:
   - test_id: 1
-    desc: Allow application/octet-stream content type when composing an email/writing with HTML mode
+    desc: Allow application/octet-stream content type when switching to HTML mode in email composer
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -17,13 +17,15 @@ tests:
           port: 80
           method: POST
           uri: /post?_task=utils&_action=text2html
-          data: "raw binary data goes here"
+          data: |-
+            TEST
+            test
           version: HTTP/1.1
         output:
           log:
             no_expect_ids: [920420]
   - test_id: 2
-    desc: Allow application/octet-stream content type when composing an email/writing with HTML mode
+    desc: Allow application/octet-stream content type when switching to text mode in email composer
     stages:
       - input:
           dest_addr: 127.0.0.1
@@ -35,7 +37,9 @@ tests:
           port: 80
           method: POST
           uri: /post?_task=utils&_action=html2text
-          data: "raw binary data goes here"
+          data: |-
+            <h1 class="pre">test</h1>
+            <h3 class="pre"><br /><br /><strong>test</strong></h3>
           version: HTTP/1.1
         output:
           log:
