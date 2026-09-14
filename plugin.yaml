@@ -1,0 +1,47 @@
+# OWASP CRS Plugin Descriptor
+# https://github.com/coreruleset/plugin-registry
+
+schema_version: 1
+
+plugin:
+  name: "roundcube-rule-exclusions-plugin"
+  description: "OWASP CRS rule exclusions for Roundcube Webmail"
+  long_description: |
+    Provides targeted rule exclusions to eliminate false positives when
+    running OWASP CRS in front of Roundcube Webmail. Covers login, viewing
+    and composing mail, the address book, and settings pages such as
+    sieve filters, vacation/out-of-office replies, and password changes.
+  type: "3rd-party"
+  category: "rule-exclusion"
+  status: "tested"
+  license: "GPL-2.0"
+  authors:
+    - name: "Esad Cetiner"
+      url: "https://github.com/EsadCetiner"
+  repository: "https://github.com/EsadCetiner/roundcube-rule-exclusions-plugin"
+  keywords:
+    - "roundcube"
+    - "webmail"
+    - "email"
+    - "rule-exclusion"
+    - "false-positive"
+
+rule_id_range:
+  start: 9519000
+  end: 9519999
+
+compatibility:
+  crs_version: ">=4.0.0"
+
+configuration:
+  file: "plugins/roundcube-rule-exclusions-config.conf"
+  variables:
+    - name: "tx.roundcube-rule-exclusions-plugin"
+      type: "boolean"
+      default: 1
+      description: "Enables the plugin's rule exclusions; set to 0 to disable them and re-enable the excluded CRS rules (ids 9519100-9519999)"
+    - name: "tx.roundcube-rule-exclusions-path"
+      type: "string"
+      default: "/"
+      example: "/mail/"
+      description: "URL path prefix Roundcube is served under; rule exclusions only apply to requests whose REQUEST_FILENAME begins with this path"
